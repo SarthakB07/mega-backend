@@ -4,7 +4,7 @@ import fs from "fs"
 cloudinary.config({ 
   cloud_name: process.env.CLOUDINARY_NAME,
   api_key: process.env.CLODINARY_API_KEY, 
-  api_secret: process.env.ZJKwzHDplCoDT2-jtvSQ32ykdzc
+  api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
 
@@ -21,6 +21,8 @@ const uploadOnCloudinary=async (localFilePath)=>{
 }catch(error){
         // removing file from server using fs
         fs.unlinkSync(localFilePath) // removed the locally saved file
+        // as upload operation got failed
+        return null;
 
     }
 }
@@ -31,4 +33,4 @@ cloudinary.uploader.upload("https://upload.wikimedia.org/wikipedia/commons/a/ae/
   { public_id: "olympic_flag" }, 
   function(error, result) {console.log(result); });
 
-  export {}
+  export {uploadOnCloudinary}

@@ -2,10 +2,11 @@
 // require('dotenv').config({path:'./env'})
 import dotenv from "dotenv"
 import mongoose from "mongoose"
+import { app } from "./app.js"
 //import {DB_NAME} from "./constants.js"
 import connectDB from "./db/index.js"
 
-dotenv.config({path:'./env'})
+dotenv.config({path:'./.env'})
 // two ways of connecting db
 // 2nd using db folder and in db folder we have created index.js
 

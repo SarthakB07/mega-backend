@@ -1,4 +1,4 @@
-import { express } from "express";
+import  express  from "express";
 import cors from "cors"
 import cookieParser from "cookie-parser"
 
@@ -14,4 +14,15 @@ app.use(express.urlencoded({extended:true,limit:"16kb"}))
 app.use(express.static("public"))
 // for cookie parser
 app.use(cookieParser())
+
+// routes import
+import userRouter from './routes/user.routes.js'
+
+// routes declaration
+// hum pehle app.get likh rhe the but ab humne router ki alag file bana li hai so we need to introduce middleware
+app.use("/api/v1/users",userRouter)
+// http://localhost:8000/api/v1/users/register
+// first it goes to users then register in
+
+
 export {app}
