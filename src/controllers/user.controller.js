@@ -6,8 +6,6 @@ import {uploadOnCloudinary} from "../utils/cloudinary.js"
 import { ApiResponse } from "../utils/ApiResponse.js";
 
 
-
-
 const registerUser=asyncHandler(async(req,res)=>{
      //res.status(200).json({
       //  message:"ok"
