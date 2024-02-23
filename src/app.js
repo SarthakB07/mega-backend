@@ -1,6 +1,9 @@
 import  express  from "express";
-import cors from "cors"
-import cookieParser from "cookie-parser"
+import cors from "cors";
+import cookieParser from "cookie-parser";
+// routes import
+import userRouter from"./routes/user.routes.js";
+// agar aisa impoort {} means not export default
 
 const app=express()
 app.use(cors({
@@ -15,8 +18,7 @@ app.use(express.static("public"))
 // for cookie parser
 app.use(cookieParser())
 
-// routes import
-import userRouter from './routes/user.routes.js'
+
 
 // routes declaration
 // hum pehle app.get likh rhe the but ab humne router ki alag file bana li hai so we need to introduce middleware

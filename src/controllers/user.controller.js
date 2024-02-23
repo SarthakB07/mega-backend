@@ -1,15 +1,16 @@
 //import mongoose,{Schema} from "mongoose"
-import { asyncHandler } from "../utils/asyncHandler.js"
+import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js";
 import { User } from "../models/user.models.js";
-import {uploadOnCloudinary} from "../utils/cloudinary.js"
+import {uploadOnCloudinary} from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 
 
 const registerUser=asyncHandler(async(req,res)=>{
-     //res.status(200).json({
-      //  message:"ok"
-   // })
+     res.status(200).json({
+        message:"ok"
+    })
+})
 
    /*  checking all conditions which make registration possible
    1. get user details from the frontend(postman)
@@ -24,13 +25,13 @@ const registerUser=asyncHandler(async(req,res)=>{
    
    */
     // now we are writing for registering a user
-   const{fullName,email,username,password}=req.body
+ /*  const{fullName,email,username,password}=req.body
    // console.log("email:",email);
 
  /*   if(fullName===""){
         throw new ApiError(400,"fullname is required")
  }
- */   // another way of writing this condition
+   // another way of writing this condition
  if([fullName,email,username,password].some((field)=>
  field?.trim()==="")
  // means yeh some function here returns true or false , trim means removing
@@ -81,6 +82,6 @@ return res.status(201).json(
     new ApiResponse(200,createdUser,"user successfully")
 )
 
-})
+})*/
 
 export {registerUser}

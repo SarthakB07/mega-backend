@@ -7,7 +7,7 @@ const storage = multer.diskStorage({
       cb(null, "./public/temp")
     },
     filename: function (req, file, cb) {
-      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+      
       // file.originalName
       cb(null, file.originalname)
       // sirf small time ke liye rahega apne pass

@@ -3,7 +3,7 @@
 const asyncHandler=(requestHandler)=>{
     // agar ismei return nhin daala then error aa rha 
    return  (req,res,next)=>{
-        Promise.resolve(req,res,next).catch((err)=>next(err))
+        Promise.resolve(requestHandler(req,res,next)).catch((err)=>next(err))
     }
 }
 
