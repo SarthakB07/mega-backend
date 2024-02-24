@@ -15,8 +15,10 @@ const uploadOnCloudinary=async (localFilePath)=>{
         const response=await cloudinary.uploader.upload(localFilePath,{
         resource_type:"auto"
     })
-    // file has been uploaded successfully
-    console.log("file has been uploaded on cloudinary",response.url);
+    // file has been uploaded successfully it shows in our vs code console when successfully postman works due to file uploaded on cloudinary
+   // console.log("file has been uploaded on cloudinary",response.url);
+   // now we r unlinking file
+   fs.unlinkSync(localFilePath)
     return response;
 }catch(error){
         // removing file from server using fs

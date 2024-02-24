@@ -46,12 +46,28 @@ const registerUser=asyncHandler(async(req,res)=>{
  if(existedUser){
     throw new ApiError(409,"User with similar details exist")
  }
+ // yeh postman ke console me upload hogi and then output vscode mei show karengi
+ // direct vscode mei show nhi hogi first we have to run on postman
+
+ //console.log(req.files)
+
+
 // now for images and avatar
 // multer gives us files access
 const avatarLocalPath=req.files?.avatar[0]?.path;
-const coverImageLocalPath=req.files?.coverImage[0]?.path;
+
+// yeh method se error aayenga if we dont pass it 
+
+//const coverImageLocalPath=req.files?.coverImage[0]?.path;
+
+// we r modifying it
+let coverImageLocalPath;
+if(req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0){
+    coverImageLocalPath = req.files.coverImage[0].path
+}
+
 if(!avatarLocalPath){throw new ApiError(400,"avatar error")}
-if(!coverImageLocalPath){throw new ApiError(400, "cover image req")}
+//if(!coverImageLocalPath){throw new ApiError(400, "cover image req")}
 
 // now for cloudinary upload method which we have written already only we have to import it
 const avatar=await uploadOnCloudinary(avatarLocalPath)
