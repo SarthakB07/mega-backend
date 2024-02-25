@@ -24,7 +24,7 @@ export const verifyJWT=asyncHandler(async(req,_,next)=>{
     req.user=user;
     next()
 }catch(error){
-    throw new ApiError(401,erroe?.message || "invalid changes")
+    throw new ApiError(401,error?.message || "invalid changes")
 }
    
 })
