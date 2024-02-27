@@ -314,7 +314,7 @@ const updateUserAvatar=asyncHandler(async(req,res)=>{
 })
 
 // updating cover image
-const updateCoverImage=asyncHandler(async(req,res)=>{
+const updateUserCoverImage=asyncHandler(async(req,res)=>{
     const coverImageLocalPath=req.file?.path
     // got this from multer
     if(!coverImageLocalPath){
@@ -470,7 +470,7 @@ changeCurrentPassword,
 getCurrentUser,
 updateAccountDetails,
 updateUserAvatar,
-updateCoverImage,
+updateUserCoverImage,
 getUserChannelProfile,
 getWatchHistory
 }
