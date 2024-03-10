@@ -53,8 +53,8 @@
     if(!this.isModified("password")) return next();
 
     // kind of else
-    this.password= await bcrypt.hash(this.password,10)
-    // this 10 is numbe rof rounds random 8,10 etc
+    this.password=  bcrypt.hash(this.password,10)
+    // this 10 is number of rounds random 8,10 etc
     next()
  })
  // now using methods

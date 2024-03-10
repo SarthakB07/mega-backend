@@ -23,13 +23,11 @@ connectDB()
 })
 
 
-
-
-
 // 1st using iffe
 /*
 import { express } from "express"
 const app=express()
+(async ()=>{})()) general way of writing 
 (async ()=>{
     try{
         // means connected

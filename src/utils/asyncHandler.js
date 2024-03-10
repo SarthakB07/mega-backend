@@ -16,6 +16,7 @@ const asyncHandler = (func)=> async()=>{}*/
 
 
 // yeh waala code try catch waala tha now we will write for promises ke saath
+
 /*const asyncHandler=(fn)=>async (req,res,next)=>{
     try{
         await fn(req,res,next)
