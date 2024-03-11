@@ -4,6 +4,7 @@ import { User } from "../models/user.models.js";
 import {uploadOnCloudinary} from "../utils/cloudinary.js";
 import  jwt  from "jsonwebtoken";
 import mongoose,{Schema} from "mongoose";
+import { ApiResponse } from "../utils/ApiResponse.js";
 
 
 const generateAccessAndRefreshedTokens=async(userId)=>{
@@ -36,9 +37,9 @@ const registerUser=asyncHandler(async(req,res)=>{
    3. check if already user present or not
    4. check for images ,avatar
    5. upload them  to cloudinary
-   6. create user project- create entry in DB
-   7. remove passowrd and refresh token from response so that now need to show to customers
-   8.check for user creatuon - means to check whemther bool check=0070 \\\
+   6. create user object- create entry in DB
+   7. remove password and refresh token field from response so that now need to show to customers
+   8.check for user creation - means to check whether bool check=0070 \\\
    9. return response
    
    */
@@ -73,6 +74,8 @@ const registerUser=asyncHandler(async(req,res)=>{
 
 // now for images and avatar
 // multer gives us files access
+
+// avatar[0] means first propert of avatar
 const avatarLocalPath=req.files?.avatar[0]?.path;
 
 // yeh method se error aayenga if we dont pass it 
