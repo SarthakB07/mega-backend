@@ -161,11 +161,10 @@ const{accessToken,refreshToken}=await generateAccessAndRefreshedTokens(user._id)
 const loggedInUser=await User.findById(user._id).select("-password -refreshToken")
 
 //sending them in cookies
-
-
 const options={
     httpOnly:true,
     secure:true
+    // by this method only modified by servers
 }
 return res
 .status(200)
@@ -173,6 +172,7 @@ return res
 .cookie("refreshToken",refreshToken,options)
 .json(
     // yeh jo h vo this.data ka part h apna from api response ke part ka
+    // means when user want to save tkens by himself  
     new ApiResponse(
         200,{
             user:loggedInUser,accessToken,
