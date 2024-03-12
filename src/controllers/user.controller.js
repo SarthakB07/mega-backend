@@ -136,21 +136,21 @@ const loginUser=asyncHandler(async(req,res)=>{
 4. then find user
 5. if user available then password check
 6. password matches then generate tokens
-7. send cookies
+7. send cookies for tokens
 */
 const {email,username,password}=req.body
 console.log(email)
 if(!username && !email){
-    throw new ApiError(400,"username or password is required")
+    throw new ApiError(400,"username or email  is required")
 }
-const user=User.findOne({
+const user=await User.findOne({
 $or: [{username},{email}]
 })
 
 if(!user){throw new ApiError(404,"user does not exist")}
 // checking password
 
-const isPasswordValid=await user.isPasswordValid(password);
+const isPasswordValid=await user.isPasswordCorrect(password);
 
 if(!isPasswordValid){throw new ApiError(401,"password does not matches")}
 
