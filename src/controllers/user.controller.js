@@ -7,6 +7,7 @@ import mongoose,{Schema} from "mongoose";
 import { ApiResponse } from "../utils/ApiResponse.js";
 
 
+
 const generateAccessAndRefreshedTokens=async(userId)=>{
     try{
         const user=await User.findById(userId)
@@ -259,6 +260,7 @@ const changeCurrentPassword=asyncHandler(async(req,res)=>{
     if(!isPasswordCorrect){
         throw new ApiError(400,"Invalid old Password")
     }
+    // now setting new password
     user.password=newPassword
     await user.save({validateBeforeSave:false})
 
@@ -267,6 +269,8 @@ const changeCurrentPassword=asyncHandler(async(req,res)=>{
     .json(new ApiResponse(200,{},"Password change successfully"))
 
 })
+
+// Getting current user
 
 const getCurrentUser=asyncHandler(async(req,res)=>{
     return res
@@ -287,6 +291,7 @@ const updateAccountDetails=asyncHandler(async(req,res)=>{
             $set:{fullName,email:email}
         },{new:true}
         ).select("-password")
+        // means password nhi chahiye
 
     return res
     .status(200)
@@ -304,6 +309,7 @@ const updateUserAvatar=asyncHandler(async(req,res)=>{
     if(!avatar.url){
         throw new ApiError(400,"Error while uploading avatar")
     }
+    // updating here
     const user=await User.findByIdAndUpdate(
         req.user?._id,
         {
