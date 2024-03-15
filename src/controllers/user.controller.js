@@ -430,6 +430,7 @@ const getWatchHistory=asyncHandler(async(req,res)=>{
         },
         {
             // it has sub pipeline
+           // iski watch history ko lookup kar rhe hai
             $lookup:{
                 from:"videos",
                 localField:"watchHistory",
@@ -454,6 +455,7 @@ const getWatchHistory=asyncHandler(async(req,res)=>{
                                 {
                                     $addFields:{
                                         owner:{
+                                            // field mai se nikalne ke liye $
                                             $first:"$owner"
                                         }
                                     }
